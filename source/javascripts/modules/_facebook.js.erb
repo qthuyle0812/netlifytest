@@ -1,0 +1,90 @@
+// Facebook functionality
+
+'use strict';
+
+( function( $, app ) {
+  app.GOJI = app.GOJI || {};
+
+  /**
+   * @function initNavDrawer
+   * Initializes the navigation drawer.
+   */
+  app.GOJI.initFacebook = function( ) {
+
+    //
+    // Vars
+    //
+
+    var that = this; // Function invocation pattern workaround for this scope
+    var tapDetect = app.GOJI.isTapOrScroll;
+    var $shareButton = $( '.share-on-facebook' );
+
+    /**
+     * @function share
+     * Trigger Facebook share dialog.
+     */
+    var share = function( ) {
+      FB.ui({
+        method: 'share',
+        href: '<%= ENV["FACEBOOK_HOST"] %>',
+        hashtag: '<%= ENV["FACEBOOK_HASHTAG"] %>'
+      }, function(response){});
+    };
+
+
+    //
+    // Event handlers
+    //
+
+    /**
+     * @function touchClickHandler
+     * Handles touch/click events on registered elements.
+     *
+     * @param {object} el – The element that should be registered for the event.
+     * @param {function} callback – The callback function.
+     */
+    var touchClickHandler = function( el, callback ) {
+      // touchstart
+      el.on( 'touchstart', function( e ) {
+        tapDetect.setStartCoord( e );
+
+      // touchend
+      } ).on( 'touchend', function( e ) {
+
+        // Prevent emulated mouse events
+        e.preventDefault( );
+
+        if ( tapDetect.noScroll( e ) ){
+          callback( this );
+        }
+
+        tapDetect.setTap( );
+
+      // click
+      } ).on( 'click', function( e ) {
+
+        // If handler was not called on touchend, call it on click
+        if ( !tapDetect.isTap ) {
+          callback( this );
+        }
+        e.preventDefault( );
+
+      } );
+    };
+    touchClickHandler( $shareButton, share );
+
+
+    //
+    // Load Facebook JavaScript SDK
+    //
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.9&appId=<%= ENV['FACEBOOK_APP_ID'] %>";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  }
+
+} )( jQuery, typeof global !== 'undefined' && global !== null ? global : window );

@@ -1,0 +1,139 @@
+/* Gojigarten motion */
+
+// Google Material Design motion:
+// https://material.io/guidelines/motion/duration-easing.html#duration-easing-natural-easing-curves
+// https://material.io/guidelines/motion/movement.html#movement-movement-in-out-of-screen-bounds
+
+
+//
+// Easing curves
+//
+
+$deceleration-curve: ease-out;
+$acceleration-curve: ease-in;
+$sharp-curve: ease-in-out;
+$standard-curve: ease-in-out;
+
+
+//
+// Durations
+//
+
+// Mobile
+$mobile-standard: 300ms;
+$mobile-complex: 375ms;
+$mobile-enter: 225ms;
+$mobile-leave: 195ms;
+
+// Tablet (30% longer than on mobile)
+$tablet-standard: 390ms;
+$tablet-complex: 487.5ms;
+$tablet-enter: 292.5ms;
+$tablet-leave: 253.5ms;
+
+// Desktop (150ms - 200ms)
+$desktop-standard: 175ms;
+$desktop-complex: 200ms;
+$desktop-leave: 150ms;
+
+
+//
+// Functions
+//
+
+@function combine($duration, $properties...) {
+  $properties-and-duration: null;
+
+  @each $property in $properties {
+    $properties-and-duration: append($properties-and-duration, $property $duration, comma);
+  }
+
+  @return $properties-and-duration;
+}
+
+
+//
+// Mixins
+//
+
+// Temporarily leaving the screen
+@mixin temp-leave($enter-leave, $properties...) {
+  @include breakpoint(xsmall) {
+    @if $enter-leave == enter {
+      transition: combine($mobile-enter, $properties) $deceleration-curve;
+    }
+    @if $enter-leave == leave {
+      transition: combine($mobile-leave, $properties) $sharp-curve;
+    }
+  };
+  @include breakpoint(small) {
+    @if $enter-leave == enter {
+      transition: combine($mobile-enter, $properties) $deceleration-curve;
+    }
+    @if $enter-leave == leave {
+      transition: combine($mobile-leave, $properties) $sharp-curve;
+    }
+  };
+  @include breakpoint(small-landscape) {
+    @if $enter-leave == enter {
+      transition: combine($mobile-enter, $properties) $deceleration-curve;
+    }
+    @if $enter-leave == leave {
+      transition: combine($mobile-leave, $properties) $sharp-curve;
+    }
+  };
+  @include breakpoint(medium) {
+    @if $enter-leave == enter {
+      transition: combine($tablet-enter, $properties) $deceleration-curve;
+    }
+    @if $enter-leave == leave {
+      transition: combine($tablet-leave, $properties) $sharp-curve;
+    }
+  };
+  @include breakpoint(large) {
+    @if $enter-leave == enter {
+      transition: combine($desktop-standard, $properties) $deceleration-curve;
+    }
+    @if $enter-leave == leave {
+      transition: combine($desktop-leave, $properties) $sharp-curve;
+    }
+  };
+}
+
+// Relative movement
+@mixin relative-movement($properties...) {
+  @include breakpoint(xsmall) {
+    transition: combine($mobile-standard, $properties) $standard-curve;
+  };
+  @include breakpoint(small) {
+    transition: combine($mobile-standard, $properties) $standard-curve;
+  };
+  @include breakpoint(small-landscape) {
+    transition: combine($mobile-standard, $properties) $standard-curve;
+  };
+  @include breakpoint(medium) {
+    transition: combine($tablet-standard, $properties) $standard-curve;
+  };
+  @include breakpoint(large) {
+    transition: combine($desktop-standard, $properties) $standard-curve;
+  };
+}
+
+// Enter screen
+@mixin enter-screen($properties...) {
+  @include breakpoint(xsmall) {
+    transition: combine($mobile-standard, $properties) $deceleration-curve;
+  };
+  @include breakpoint(small) {
+    transition: combine($mobile-standard, $properties) $deceleration-curve;
+  };
+  @include breakpoint(small-landscape) {
+    transition: combine($mobile-standard, $properties) $deceleration-curve;
+  };
+  @include breakpoint(medium) {
+    transition: combine($tablet-standard, $properties) $deceleration-curve;
+  };
+  @include breakpoint(large) {
+    transition: combine($desktop-standard, $properties) $deceleration-curve;
+  };
+}

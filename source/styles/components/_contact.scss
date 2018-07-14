@@ -1,0 +1,77 @@
+/* BEM block: contact */
+
+.contact {
+  font-style: normal;
+}
+
+.contact__row {
+  border-bottom: 1px dotted $app-dark-divider;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+.contact__row > * {
+  max-width: 100%;
+}
+
+.contact__row:last-child {
+  border-bottom: none;
+}
+
+.contact__icon {
+  color: $app-dark-icon-active;
+}
+
+.contact__data {
+  font-size: 18px;
+}
+
+.contact__link {
+  background-color: $goji-red;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: $app-light-text-primary;
+  padding: .25rem .5rem;
+  text-decoration: none;
+}
+
+.contact__link:hover {
+  background-color: $goji-red-hover;
+}
+
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.contact + .contact {
+  margin-top: 2.4rem;
+}
+
+.contact__row {
+  height: 4.8rem;
+}
+
+.contact__icon {
+  margin-right: 1.6rem;
+}
+
+// > 735px
+@include breakpoint(medium) {
+  .contact + .contact {
+    margin-top: 3rem;
+  }
+
+  .contact__row {
+    height: 6rem;
+  }
+
+  .contact__icon {
+    font-size: 3.2rem !important;
+    margin-right: 2rem;
+  }
+};

@@ -1,0 +1,75 @@
+//
+// Gojigarten colors
+//
+
+$white: #fff;
+$light-gray: #fafafa;
+
+$goji-red: #e62d40; /* = rgb(230, 45, 65) */
+$goji-red-hover: darken($goji-red, 10%);
+$goji-green: #7bbc42; /* = rgb(123, 188, 66) */
+$goji-light-green: #deeed0;
+$goji-green-hover: darken($goji-green, 10%);
+
+$app-bg-color: $goji-light-green;
+
+
+//
+// Text & icon colors
+//
+
+$app-dark-text-primary: rgba(0, 0, 0, .87);
+$app-dark-text-secondary: rgba(0, 0, 0, .54);
+$app-dark-text-disabled-hint: rgba(0, 0, 0, .38);
+
+$app-light-text-primary: rgb(255, 255, 255);
+$app-light-text-secondary: rgba(255, 255, 255, .7);
+$app-light-text-disabled-hint: rgba(255, 255, 255, .5);
+
+$app-dark-divider: rgba(0, 0, 0, .12);
+$app-light-divider: rgba(255, 255, 255, .12);
+
+$app-dark-icon-active: rgba(0, 0, 0, .54);
+$app-dark-icon-inactive: rgba(0, 0, 0, .38);
+
+$app-light-icon-active: rgb(255, 255, 255);
+$app-light-icon-inactive: rgba(255, 255, 255, .5);
+
+
+//
+// App container
+//
+
+$app-width-xsmall: inherit;
+$app-width-small: 360px;
+$app-width-medium: 720px;
+$app-width-large: 1080px;
+
+
+//
+// Toolbar
+//
+
+$toolbar-top-height-small: 36px; // 24px;
+$toolbar-bottom-height-small: 56px;
+
+$toolbar-top-height-medium: 48px; // 36px;
+$toolbar-bottom-height-medium: 72px;
+
+$toolbar-top-height-large: 48px;
+$toolbar-bottom-height-large: 96px;
+
+
+//
+// Fonts
+//
+
+$font-light: 'Brandon Grot W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-medium: 'Brandon Grot W01 Medium', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+//
+// Golden ratio
+//
+
+$golden-ratio: 1.61803398875;

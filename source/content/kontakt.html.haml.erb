@@ -1,0 +1,31 @@
+---
+title: Kontakt
+meta_description: Gojigarten GbR Kontakt und Ansprechpartner.
+---
+
+%picture
+  %source{media: "(min-width: 1096px)", srcset: "/images/content/hero-kontakt@3x.jpg 1x, /images/content/hero-kontakt@6x.jpg 2x"}
+  %source{media: "(min-width: 736px)", srcset: "/images/content/hero-kontakt@2x.jpg 1x, /images/content/hero-kontakt@4x.jpg 2x, /images/content/hero-kontakt@6x.jpg 3x"}
+  %source{media: "(min-width: 376px) and (orientation: portrait)", srcset: "/images/content/hero-kontakt@1x.jpg 1x, /images/content/hero-kontakt@2x.jpg 2x, /images/content/hero-kontakt@3x.jpg 3x"}
+  %source{media: "(max-width: 376px) and (orientation: portrait)", srcset: "/images/content/hero-kontakt@1x.jpg 1x, /images/content/hero-kontakt@2x.jpg 2x, /images/content/hero-kontakt@3x.jpg 3x"}
+  %source{media: "(max-width: 736px) and (orientation: landscape)", srcset: "/images/content/hero-kontakt@1x.jpg 1x, /images/content/hero-kontakt@2x.jpg 2x, /images/content/hero-kontakt@3x.jpg 3x"}
+  %img{src: "/images/content/hero-kontakt@3x.jpg",
+    class: "content__hero-img", alt: "Dagmar im Gojigarten"}
+
+.content__inner
+  %h1.content__headline.content__headline--p-top
+    Kontakt
+  %p.content__lead
+    Wenn Sie Fragen, Wünsche oder Anregungen haben, sprechen Sie uns jederzeit
+    gerne an. Wir freuen uns auf Ihre Nachricht!
+
+  %section.content__section
+    %h2.content__section-title
+      So erreichen Sie uns
+    %address.contact
+      .contact__row
+        %i.contact__icon.material-icons mail_outline
+        %span.contact__data
+          = mailto email: 'post@gojigarten.com',
+              string: 'post@gojigarten.com',
+              classes: 'contact__link'

@@ -1,0 +1,146 @@
+/* BEM block: grid */
+
+
+//
+// Vars
+//
+
+$gutter: 0;
+
+
+//
+// Breakpoint independent styles
+//
+
+.grid__items {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+
+.grid__item {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  max-width: 100%;
+}
+
+/* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+.grid__item > * {
+  max-width: 100%;
+}
+
+.grid__item--alpha,
+.grid__item:first-child {
+  margin-left: 0;
+}
+
+.grid__item--omega,
+.grid__item:last-child {
+  margin-right: 0;
+}
+
+.grid__item picture,
+.grid__item img {
+  width: 100%;
+}
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.grid__items + .grid__items {
+  border-top: 1px solid $goji-light-green;
+  margin-top: 6rem;
+  padding-top: 6rem;
+}
+
+.grid__item {
+  margin: 0;
+  width: 100%;
+}
+
+.grid__item + .grid__item {
+  margin-top: 3rem;
+}
+
+.grid__item--text {
+  padding: 0 7.5%;
+}
+
+.grid__item--sm-1 {
+  margin-top: 0 !important;
+  margin-bottom: 3rem;
+  order: 1;
+}
+
+.grid__item--sm-2 {
+  order: 2;
+}
+
+// > 375px
+@include breakpoint(small) {
+  .grid__item {
+    width: $app-width-small;
+  }
+}
+
+// <= 735px and landscape
+@include breakpoint(small-landscape) {
+  .grid__item {
+    width: $app-width-small;
+  }
+};
+
+// > 735px
+@include breakpoint(medium) {
+  .grid__items + .grid__items {
+    border: none;
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .grid__item {
+    margin: 0;
+  }
+
+  .grid__item--m-1 {
+    order: 1;
+  }
+
+  .grid__item--m-2 {
+    order: 2;
+  }
+
+  .grid__item + .grid__item {
+    margin-top: 0;
+  }
+
+  .grid__items--2-col {
+    .grid__item {
+      width: 360px;
+      height: 320px;
+    }
+
+    .grid__item--text {
+      padding: 0 7.5%;
+    }
+  }
+}
+
+// > 1095px
+@include breakpoint(large) {
+  .grid__items--2-col {
+    .grid__item {
+      width: 540px;
+      height: 480px;
+    }
+
+    .grid__item--text {
+      padding: 0 7.5%;
+    }
+  }
+}

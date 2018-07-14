@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="<%= I18n.t(:lang) %>">
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= title %></title>
+
+    <meta name="description" content="<%= meta_description %>">
+    <meta name="keywords" content="Goji, Gojibeere, Goji-Beere, Bio, Superfood, Gojigarten">
+
+    <% if ENV['ENVIRONMENT'] == 'production' %>
+      <meta name="robots" content="index, follow">
+      <meta name="google-site-verification" content="<%= ENV['GOOGLE_SITE_VERIFICATION']%>">
+    <% else %>
+      <meta name="robots" content="noindex, nofollow">
+    <% end %>
+
+    <link rel="icon" href="/images/favicon.ico">
+
+    <!-- Android homescreen icon -->
+    <link rel="icon" sizes="192x192" href="/images/icon-192x192.png">
+
+    <!-- Apple homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/images/icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icon-180x180.png">
+
+    <meta name="application-name" content="www.gojigarten.com">
+    <meta name="msapplication-tooltip" content="The Gojigarten website.">
+    <meta name="msapplication-starturl" content="https://www.gojigarten.com/?pinned=true">
+    <meta name="msapplication-navbutton-color" content="#7bbc42">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#7bbc42">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#deeed0">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Disable automatic detection and formatting of possible phone numbers in Safari on iOS -->
+    <meta name="format-detection" content="telephone=no">
+
+    <!--
+      Facebook Open Graph tags
+      See: https://developers.facebook.com/docs/sharing/webmasters
+    -->
+    <meta property="fb:app_id" content="<%= ENV['FACEBOOK_APP_ID'] %>">
+    <meta property="og:url" content="<%= ENV['FACEBOOK_HOST'] %>">
+    <meta property="og:type" content="website">
+    <meta property="og:title"
+          content="Frische Bio-Gojibeeren aus dem Gojigarten">
+    <meta property="og:description"
+          content="Superfood made in Bavaria. Während der Erntezeit von etwa
+          Juli bis September gibt's frische Gojibeeren in Bioqualität direkt von unserem Feld bei München.">
+    <meta property="og:image" content="<%= ENV['FACEBOOK_HOST'] %>/images/fb.jpg">
+    <meta property="og:image:secure_url" content="<%= ENV['FACEBOOK_HOST'] %>/images/fb.jpg">
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <style media="screen">
+      .app--ready {
+        background-color: #fff;
+        opacity: 0;
+      }
+
+      .app--loading {
+        align-content: center;
+        align-items: center;
+        background-color: #fafafa;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 100vh;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      /* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+      .app--loading > * {
+        max-width: 100%;
+      }
+
+      .app--visible {
+        opacity: 1;
+        transition: opacity .2s ease-out;
+      }
+
+      .app--hidden {
+        display: none;
+      }
+
+      .content img {
+        opacity: 0;
+        transition: opacity 2s ease-out;
+      }
+
+      .app--visible .content img {
+        opacity: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="app app--ready">
+      <header class="toolbar">
+        <div class="toolbar__top">
+          <%=
+            content_tag(is_active('/index.html') ? :h1 : :span,
+              'Bio-Gojibeeren aus Bayern',
+              class: 'toolbar__slogan')
+          %>
+          <div class="toolbar__top-right">
+            <nav>
+              <ul class="toolbar__menu">
+                <% data.menu.root.each do |item| %>
+                  <li class="toolbar__menu-item">
+                    <%=
+                      link_to(item.menuLabel,
+                        item.path,
+                        class: "toolbar__menu-link #{'toolbar__menu-link--active' if is_active(item.path)}",
+                        relative: true)
+                    %>
+                  </li>
+                <% end %>
+              </ul>
+            </nav>
+            <button class="toolbar__button share-on-facebook">
+              <img src="/images/icon-fb.svg" alt="Auf Facebook teilen">
+            </button>
+          </div>
+        </div>
+        <div class="toolbar__bottom">
+          <%= image_tag 'gojigarten-logo.svg',
+                alt: 'Gojigarten',
+                class: 'toolbar__logo',
+                onclick: 'window.location = "/"' %>
+          <button class="toolbar__menu-button">
+            <i class="material-icons" aria-hidden="true">menu</i>
+          </button>
+        </div>
+      </header>
+
+      <main class="content<%= content_class %>">
+        <%= yield %>
+      </main>
+
+      <aside class="nav-drawer">
+        <div class="nav-drawer__inner">
+          <header class="nav-drawer__product">
+            <%= image_tag 'gojigarten-logo.svg',
+                  alt: 'Gojigarten',
+                  class: 'nav-drawer__product-icon',
+                  onclick: 'window.location = "/"' %>
+          </header>
+
+          <nav>
+            <ul class="nav-drawer__menu">
+              <% data.menu.root.each do |item| %>
+                <li class="nav-drawer__menu-item">
+                  <%=
+                    link_to(item.path,
+                      class: "nav-drawer__link #{'nav-drawer__link--active' if is_active(item.path)}",
+                      relative: true) {
+                        content_tag(:span,
+                          item.menuLabel,
+                          class: 'nav-drawer__link-text')
+                      }
+                  %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      </aside>
+
+      <footer class="footer<%= footer_class %>">
+        &copy; Gojigarten GbR
+        <ul class="footer__links">
+          <% data.menu.footer.each do |item| %>
+            <li class="footer__link-item">
+              <%=
+                link_to(item.menuLabel,
+                  item.path,
+                  class: "footer__link #{'footer__link--active' if is_active(item.path)}",
+                  relative: true)
+              %>
+            </li>
+          <% end %>
+        </ul>
+        <%= image_tag '/images/certificates.svg', class: 'footer__certificates' %>
+      </footer>
+    </div>
+
+    <div class="app app--loading">
+      <%= image_tag 'loader.gif',
+            alt: 'Loading...' %>
+    </div>
+    <div class="overlay"><!-- #7bbc42, 75 % opacity --></div>
+    <div id="fb-root"></div>
+
+    <%= javascript_include_tag 'index', { async: '' } %>
+    <script src="<%= ENV['FONTS_URL'] %>"></script>
+  </body>
+</html>
+<%= stylesheet_link_tag :index %>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

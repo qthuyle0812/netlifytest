@@ -1,0 +1,17 @@
+/* BEM block: overlay */
+
+.overlay {
+  background-color: rgba($goji-green, .5);
+  display: none;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 15; /* 1 below nav-drawer */
+}
+
+.overlay--visible {
+  display: block;
+}

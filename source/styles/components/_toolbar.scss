@@ -1,0 +1,240 @@
+/* BEM block: toolbar */
+
+
+//
+// Breakpoint independent styles
+//
+
+.toolbar {
+  @include shadow(4dp);
+
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  text-align: center;
+  z-index: 4;
+}
+
+.toolbar__top {
+  background-color: $goji-green;
+  display: flex;
+}
+
+.toolbar__bottom {
+  background-color: $white;
+}
+
+.toolbar__slogan {
+  color: $white;
+  font-family: $font-medium;
+  font-weight: normal;
+}
+
+.toolbar__menu {
+  list-style-type: none;
+}
+
+.toolbar__button:hover {
+  @include shadow(4dp);
+}
+
+.toolbar__button:active {
+  @include shadow(2dp);
+}
+
+.toolbar__logo {
+  cursor: pointer;
+  margin: 0 auto;
+  width: auto;
+}
+
+.toolbar__menu-button {
+  align-content: center;
+  align-items: center;
+  background: none;
+  border: 0;
+  color: $goji-red;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 0;
+  position: fixed;
+}
+
+.toolbar__menu-button:focus {
+  outline: none;
+}
+
+/* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+.toolbar__menu-button > * {
+  max-width: 100%;
+}
+
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.toolbar {
+  left: 0;
+  right: 0;
+}
+
+.toolbar__top {
+  align-items: center;
+  justify-content: space-between;
+  height: $toolbar-top-height-small;
+  padding: 0 16px;
+}
+
+/* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+.toolbar__top > * {
+  max-width: 100%;
+}
+
+.toolbar__bottom {
+  height: $toolbar-bottom-height-small;
+}
+
+.toolbar__slogan {
+  font-size: 1.6rem;
+}
+
+.toolbar__button {
+  margin-top: 2px;
+}
+
+.toolbar__button,
+.toolbar__button > img {
+  width: 28px;
+  height: 28px;
+}
+
+.toolbar__menu {
+  display: none;
+}
+
+.toolbar__menu-button {
+  height: $toolbar-bottom-height-small;
+  left: 16px;
+}
+
+.toolbar__logo {
+  height: 72px;
+  padding: 16px;
+}
+
+// > 735px
+@include breakpoint(medium) {
+  .toolbar__top {
+    height: $toolbar-top-height-medium;
+    padding: 0 24px;
+  }
+
+  .toolbar__bottom {
+    height: $toolbar-bottom-height-medium;
+  }
+
+  .toolbar__slogan {
+    font-size: 1.8rem;
+  }
+
+  .toolbar__button {
+    margin-top: 0;
+  }
+
+  .toolbar__button,
+  .toolbar__button > img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .toolbar__menu-button {
+    height: $toolbar-bottom-height-medium;
+    left: 24px;
+  }
+
+  .toolbar__logo {
+    height: 96px;
+    padding: 20px;
+  }
+}
+
+// > 1095px
+@include breakpoint(large) {
+  .toolbar__top {
+    justify-content: space-between;
+    height: $toolbar-top-height-large;
+  }
+
+  .toolbar__top-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .toolbar__bottom {
+    height: $toolbar-bottom-height-large;
+  }
+
+  .toolbar__slogan {
+    font-size: 1.8rem;
+  }
+
+  .toolbar__button {
+    margin-left: 24px;
+  }
+
+  .toolbar__menu {
+    display: block;
+    font-size: 1.6rem;
+    letter-spacing: .075rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+
+  .toolbar__menu-item {
+    display: inline-block;
+    margin-left: -5px;
+  }
+
+  .toolbar__menu-link {
+    border-bottom: 2px solid $goji-green;
+    box-sizing: border-box;
+    color: $white;
+    display: inline-block;
+    font-family: $font-medium;
+    height: $toolbar-top-height-large;
+    padding: 16px 2rem 0;
+    text-decoration: none;
+    transition: border-bottom .2s ease-in;
+  }
+
+  .toolbar__menu-link--active {
+    background-color: $app-light-divider;
+    // color: $goji-red;
+  }
+
+  // @media (hover: hover) {
+    .toolbar__menu-link:hover,
+    .toolbar__menu-link--active {
+      border-bottom: 2px solid $goji-red;
+    }
+
+    .toolbar__menu-link:hover:not(.toolbar__menu-link--active ) {
+      background-color: $app-light-divider;
+    }
+  // }
+
+  .toolbar__menu-button {
+    display: none;
+  }
+
+  .toolbar__logo {
+    height: 128px;
+    padding: 24px;
+  }
+}

@@ -1,0 +1,74 @@
+---
+title: Produkt- und Vertriebsinformationen für Händler
+meta_description: Wir erzeugen und vermarkten frische Gojibeeren in Bioqualität. Informationen für Groß- und Gewerbekunden über Gojigarten Produkte und den Vertrieb.
+---
+
+%picture
+  %source{media: "(min-width: 1096px)", srcset: "/images/content/hero-haendler@3x.jpg 1x, /images/content/hero-haendler@6x.jpg 2x"}
+  %source{media: "(min-width: 736px)", srcset: "/images/content/hero-haendler@2x.jpg 1x, /images/content/hero-haendler@4x.jpg 2x, /images/content/hero-haendler@6x.jpg 3x"}
+  %source{media: "(min-width: 376px) and (orientation: portrait)", srcset: "/images/content/hero-haendler@1x.jpg 1x, /images/content/hero-haendler@2x.jpg 2x, /images/content/hero-haendler@3x.jpg 3x"}
+  %source{media: "(max-width: 376px) and (orientation: portrait)", srcset: "/images/content/hero-haendler@1x.jpg 1x, /images/content/hero-haendler@2x.jpg 2x, /images/content/hero-haendler@3x.jpg 3x"}
+  %source{media: "(max-width: 736px) and (orientation: landscape)", srcset: "/images/content/hero-haendler@1x.jpg 1x, /images/content/hero-haendler@2x.jpg 2x, /images/content/hero-haendler@3x.jpg 3x"}
+  %img{src: "/images/content/hero-haendler@3x.jpg",
+    class: "content__hero-img", alt: "Gojigarten Frischebox"}
+
+.content__inner
+  %h1.content__headline.content__headline--p-top
+    Händlerinfos
+  %p.content__lead
+    Informationen für Groß- und Zwischenhändler.
+
+  %section.content__section
+    %h2.content__section-title Frische Bio-Gojibeeren aus München
+    %p.content__text
+      Unsere Bioland zertifizierte Plantage in Feldmoching umfasst circa
+      1 Hektar mit mehr als 5.000 Gojisträuchern. Die Pflanzen der Sorte
+      Turgidus wurden in Deutschland von
+      %a.content__link{href: "http://www.gaertnerei-umbach.de/", target: "_blank"} Klaus Umbach in Heilbronn
+      gezüchtet und tragen süßere Früchte als die klassischen Sorten.
+
+  %section.content__section
+    %h2.content__section-title Ernte &amp; Verpackung
+    %p.content__text
+      Die Beeren werden von Hand mit Grün geerntet. Die Erntezeit beginnt je
+      nach Witterungsbedingungen ungefähr Mitte Juli und erstreckt sich über
+      circa 12 Wochen bis in den Oktober hinein. Vor Ort werden jeweils 30 g
+      Beeren in die biologisch abbaubaren Verkaufsschälchen verpackt. Bei
+      gekühlter Lagerung um +10 °C sind die Beeren dann ungefähr eine Woche
+      haltbar.
+    %p.content__text
+      Wir planen zukünftig einen Teil unserer Ernte zu trocknen und
+      getrocknete Gojibeeren anzubieten. Sollten Sie Interesse oder Wünsche für
+      weitere Produktentwicklungen (z.B. Müsli, Marmelade, Saft, Kosmetik etc.)
+      haben, sprechen Sie uns jederzeit gerne an.
+    %p.content__text
+      Bei Fragen zu Logistik und Preisen kontaktieren Sie uns bitte ebenfalls.
+
+  %section.content__section
+    %h2.content__section-title Ihre Ansprechpartner
+    %address.contact
+      .contact__row
+        %i.contact__icon.material-icons face
+        %span.contact__data Jörg Henkel
+      -# .contact__row
+      -#   %i.contact__icon.material-icons phone
+      -#   %span.contact__data
+      -#     %a.contact__link{href: "tel:+49-177-8765997"}
+      -#       +49 (0)177 8765997
+      .contact__row
+        %i.contact__icon.material-icons mail_outline
+        %span.contact__data
+          = mailto email: 'joerg.henkel@gojigarten.com',
+              string: 'joerg.henkel@gojigarten.com',
+              classes: 'contact__link'
+
+    %address.contact
+      .contact__row
+        %i.contact__icon.material-icons face
+        %span.contact__data Dagmar Keil
+      .contact__row
+        %i.contact__icon.material-icons mail_outline
+        %span.contact__data
+          = mailto email: 'dagmar.keil@gojigarten.com',
+              string: 'dagmar.keil@gojigarten.com',
+              classes: 'contact__link'

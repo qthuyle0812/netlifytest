@@ -1,0 +1,30 @@
+---
+# Root
+root:
+  -
+    menuLabel: Der Gojigarten
+    path: /gojigarten.html
+  -
+    menuLabel: Die Gojibeere
+    path: /gojibeere.html
+  -
+    menuLabel: Händlerinfos
+    path: /haendlerinfos.html
+  -
+    menuLabel: Kaufen
+    path: /kaufen.html
+  -
+    menuLabel: Kontakt
+    path: /kontakt.html
+
+# footer
+footer:
+  -
+    menuLabel: Impressum
+    path: /impressum.html
+  # -
+  #  menuLabel: AGB
+  #  path: /agb.html
+  -
+    menuLabel: Datenschutz
+    path: /datenschutz.html

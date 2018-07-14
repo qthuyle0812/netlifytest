@@ -1,0 +1,27 @@
+/* Gojigarten breakpoints mixin */
+
+@mixin breakpoint($size) {
+  @if $size == large {
+    @media screen
+    and (min-width: 1096px) { @content; }
+  }
+  @else if $size == medium {
+    @media screen
+    and (min-width: 736px) { @content; }
+  }
+  @else if $size == small {
+    @media screen
+    and (min-width: 376px)
+    and (orientation: portrait) { @content; }
+  }
+  @else if $size == xsmall {
+    @media screen
+    and (max-width: 375px)
+    and (orientation: portrait) { @content; }
+  }
+  @else if $size == small-landscape {
+    @media screen
+    and (max-width: 736px)
+    and (orientation: landscape) { @content; }
+  }
+}

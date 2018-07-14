@@ -1,0 +1,41 @@
+/* Gojigarten base stylings */
+
+html {
+  font-size: 62.5%; /* normalize 1em = 10px */
+}
+
+body {
+  background: $app-bg-color;
+  font-family: $font-light;
+  font-size: 1rem;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  z-index: 0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+address {
+  font-style: normal;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+button:focus {
+  outline: 0;
+}
+
+// Fix for Samsung default browser not displaying material icons
+// See: https://github.com/react-toolbox/react-toolbox/issues/1026
+.material-icons{
+  -webkit-font-feature-settings: 'liga';
+  -moz-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+}

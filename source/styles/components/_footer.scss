@@ -1,0 +1,76 @@
+/* BEM block: footer */
+
+
+//
+// Breakpoint independent styles
+//
+
+.footer {
+  background-color: $goji-green;
+  padding: 2em;
+  text-align: center;
+}
+
+.footer__links {
+  list-style-type: none;
+  margin: 1.5em 0;
+  padding: 0;
+}
+
+.footer__link-item {
+  display: inline-block;
+  margin-right: 2em;
+}
+
+.footer__link-item:last-child {
+  margin-right: 0;
+}
+
+.footer__link {
+  color: $app-dark-text-primary;
+  font-family: $font-medium;
+  text-decoration: none;
+}
+
+.footer__link--active {
+  color: $goji-red;
+}
+
+// @media (hover: hover) {
+  .footer__link:hover {
+    text-decoration: underline;
+  }
+
+  .footer__link--active:hover {
+    text-decoration: none;
+  }
+// }
+
+.footer__certificates {
+  display: inline-block;
+  width: 125px;
+  height: auto;
+}
+
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.footer {
+  font-size: 1.2rem;
+}
+
+.footer--home {
+  margin-top: 6rem;
+}
+
+@include breakpoint(medium) {
+  .footer {
+    font-size: 1.4rem;
+  }
+
+  .footer--home {
+    margin-top: -1px;
+  }
+};

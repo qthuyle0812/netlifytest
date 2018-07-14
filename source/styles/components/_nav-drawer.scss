@@ -1,0 +1,127 @@
+/* BEM block: nav-drawer */
+
+
+//
+// Breakpoint independent styles
+//
+
+.nav-drawer {
+  @include temp-leave(leave, transform);
+  background-color: $white;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  width: 256px;
+  z-index: 16;
+}
+
+.nav-drawer--visible {
+  @include temp-leave(enter, transform);
+  @include shadow(16dp);
+  transform: translateX(0);
+}
+
+.nav-drawer__inner {
+  box-sizing: border-box;
+  position: relative;
+}
+
+.nav-drawer__product {
+  border-bottom: 1px solid $app-dark-divider;
+  margin-bottom: 8px;
+
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+/* https://github.com/philipwalton/flexbugs#2-column-flex-items-set-to-align-itemscenter-overflow-their-container */
+.nav-drawer__product > * {
+  max-width: 100%;
+}
+
+.nav-drawer__menu {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+.nav-drawer__menu li {
+  font-family: $font-medium;
+  font-size: 1.6rem;
+  letter-spacing: .075rem;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.nav-drawer__link {
+  color: $goji-green;
+  display: block;
+  line-height: 48px;
+  padding: 0 24px;
+  text-decoration: none;
+}
+
+.nav-drawer__link--active {
+  border-right: 2px solid $goji-red;
+  color: $goji-red;
+}
+
+// @media (hover: hover) {
+  .nav-drawer__link:hover {
+    background-color: $goji-light-green;
+    border-right: 2px solid $goji-red;
+  }
+
+  .nav-drawer__link--active:hover {
+    background-color: transparent;
+    border-right: 2px solid $goji-red;
+    color: $goji-red;
+  }
+// }
+
+.nav-drawer__link-text {
+  display: inline-block;
+  line-height: 1.1;
+  vertical-align: middle;
+}
+
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.nav-drawer__product {
+  height: $toolbar-top-height-small + $toolbar-bottom-height-small;
+  justify-content: center;
+}
+
+.nav-drawer__product-icon {
+  width: auto;
+  height: $toolbar-bottom-height-small;
+}
+
+// > 735px
+@include breakpoint(medium) {
+  .nav-drawer__product {
+    height: $toolbar-top-height-medium + $toolbar-bottom-height-medium;
+  }
+
+  .nav-drawer__product-icon {
+    width: auto;
+    height: $toolbar-bottom-height-medium;
+  }
+};
+
+// > 1095px
+@include breakpoint(large) {
+  .nav-drawer {
+    display: none;
+  }
+}

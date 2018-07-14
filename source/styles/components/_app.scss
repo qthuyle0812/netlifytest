@@ -1,0 +1,53 @@
+/* BEM block: app */
+
+
+//
+// Breakpoint independent styles
+//
+
+.app {
+  @include shadow(2dp);
+  height: 100%;
+}
+
+
+//
+// Responsive styles: Mobile first (= default)
+//
+
+.app {
+  width: $app-width-xsmall;
+  margin: 0;
+}
+
+// > 375px
+@include breakpoint(small) {
+  .app {
+    width: $app-width-small;
+    margin: 0 auto;
+  }
+}
+
+// <= 735px and landscape
+@include breakpoint(small-landscape) {
+  .app {
+    width: $app-width-small;
+    margin: 0 auto;
+  }
+}
+
+// > 735px
+@include breakpoint(medium) {
+  .app {
+    width: $app-width-medium;
+    margin: 0 auto;
+  }
+}
+
+// > 1095px
+@include breakpoint(large) {
+  .app {
+    width: $app-width-large;
+    margin: 0 auto;
+  }
+}

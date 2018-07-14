@@ -1,0 +1,8 @@
+# Netlify redirects
+# FILE redirects IS RENAMED TO _redirects AFTER MIDDLEMAN BUILD!
+
+# Home
+/index.html / 301
+
+# Content pages
+/*/index.html /:splat/ 301!

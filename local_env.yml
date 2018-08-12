@@ -8,7 +8,7 @@
 # GMAIL_USERNAME: 'Your_Gmail_Username'
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 
-ENVIRONMENT: "dev" # Use "production" for production build
+ENVIRONMENT: "production" # Use "production" for production build
 FACEBOOK_APP_ID: ""
 FACEBOOK_HOST: ""
 FACEBOOK_HASHTAG: ""
